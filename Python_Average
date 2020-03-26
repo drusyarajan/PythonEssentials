@@ -1,0 +1,9 @@
+"""This code calculates average score"""
+#initialize
+grades = [10,26,28,57,79,35,96,45, 95]
+
+for i in grades:
+    i+=1
+    total = sum(grades)
+average = total/(i-1)
+print(f'average score is {average}')
