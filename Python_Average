@@ -1,9 +1,9 @@
 """This code calculates average score"""
 #initialize
 grades = [10,26,28,57,79,35,96,45, 95]
-
+count = 1
 for i in grades:
-    i+=1
+    count+=1
     total = sum(grades)
-average = total/(i-1)
-print(f'average score is {average}')
+average = total/(count)
+print(f'average score is {average}, number of students who took the test {count-1}')
