@@ -1,0 +1,10 @@
+"""This code explains while loop in Python"""
+#enter initial value
+V1 = int(input('enter initial value'))
+V2 = int(input('enter limit'))
+#while loop starts
+while V1 <= V2:
+    print('Value of V1 will be incremented from here on')
+    print('Current value of V1 is ',V1)
+    V1 = V1+1
+print('We have exited from loop. Final value of V1 is ', V1)
