@@ -1,0 +1,19 @@
+"""This function will calculate investment intrest for 'n' years"""
+def simple_interest(p, r, n):
+    a = 0
+    t = n
+    for n in range (1, t+1):
+        if (n%10 == 1 or n==1) and n/10 !=1:
+            s ='st'
+        elif (n%10 ==2 or n==2) and n/10 != 1:
+            s ='nd'
+        elif (n%10 == 3 or n==3) and n/10 != 1:
+            s ='rd'
+        else:
+            s='th'
+        a = Decimal(p)*((1+Decimal(r))**t)    
+        print(f"for {n}{s} year, amount is {Decimal(a):<15}")
+    if n%10 == 0:
+        print(f"thank you for banking with us for {n/10} decades, you are a valued customer!! Please check with home branch for your special gift")
+    
+    return None
