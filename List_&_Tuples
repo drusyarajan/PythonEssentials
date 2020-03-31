@@ -16,3 +16,13 @@ rajans = ('Dusya', 'Kavya', 'Padmalatha', 'Rajan')
 print(f"{'ID':>5} {'NAME':>20}")
 for i, name in enumerate(rajans):
     print(f"{i:>5} {name:>20}")
+
+number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+del number[:5]
+print(f"{number}")
+number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+del number[::2]
+print(f"{number}")
+number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+del number[1::2]
+print(f"{number}")
