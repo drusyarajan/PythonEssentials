@@ -1,3 +1,14 @@
+rainbow = ['violet', 'indigo', 'blue', 'green', 'yellow', 'orange', 'red']
+rainbow.insert(rainbow.index('violet'), 'Red')                                                                                                                                                                                                                                                                                                                                           
+rainbow.reverse()                                                                                                                                                                                                                                                                                                                                                                     
+rainbow.remove('orange')                                                                                                                                                                                                                                                                                                                                                                 
+
+
+
+
+
+
+
 ## Sorting Lists
 menu = ('Puttu', 'Appam', 'Idiyappam', 'Dosa', 'Kadala', 'Cherupayar', 'Bajji', 'Egg')
 pricing = [20, 10, 15, 8, 25, 28, 18, 40]
