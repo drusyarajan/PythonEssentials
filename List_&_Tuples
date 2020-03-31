@@ -9,6 +9,23 @@ print(f"{'Kadala' in menu}")
 print(f"{'adala' in menu}")
 print(f"{20 in pricing}")
 
+print(f"Check index {menu.index('Puttu')}")
+print(f"Check  index {pricing.index(15)}")
+
+
+if menu.index('Puttu') >= 0:
+    puttu = menu.index('Puttu')
+    print(f"Lets have breakfast here")
+    print(f"as Puttu is available for price  {pricing[menu.index('Puttu')]}")
+
+
+
+
+
+
+
+
+
 
 
 ## Slicing Lists.
