@@ -1,3 +1,16 @@
+## Sorting Lists
+menu = ('Puttu', 'Appam', 'Idiyappam', 'Dosa', 'Kadala', 'Cherupayar', 'Bajji', 'Egg')
+pricing = [20, 10, 15, 8, 25, 28, 18, 40]
+title = 'Veenas Kitchen'
+print(f"{sorted(pricing, reverse = True)}")
+print(f"{sorted(menu, reverse = True)}")
+print(f"{sorted(title)}")
+print(f"{'Kadala' in menu}")
+print(f"{'adala' in menu}")
+print(f"{20 in pricing}")
+
+
+
 ## Slicing Lists.
 number = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
 ## Displaying even numbers
