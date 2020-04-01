@@ -1,0 +1,3 @@
+## This file explains List Generator statements
+##  List Generator statement is lazy statement
+## only after each iteration list is created
