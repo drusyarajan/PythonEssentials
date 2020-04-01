@@ -10,22 +10,10 @@ covid.pop
 covid.pop
 
 
-
-
-
-lt3 = [item for item in range(1,100) if ((item%3 == 0) and (item < 30))]  
-lot = [(item, item**3) for item in range(1,6)]
-
-
-
 rainbow = ['violet', 'indigo', 'blue', 'green', 'yellow', 'orange', 'red']
 rainbow.insert(rainbow.index('violet'), 'Red')                                                                                                                                                                                                                                                                                                                                           
 rainbow.reverse()                                                                                                                                                                                                                                                                                                                                                                     
 rainbow.remove('orange')                                                                                                                                                                                                                                                                                                                                                                 
-
-
-
-
 
 
 
