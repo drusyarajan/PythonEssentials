@@ -1,3 +1,5 @@
+### This is to explain List Comprehension ###
+
 covid = []
 covid.append('fever')
 covid.append('cough')
