@@ -1,0 +1,6 @@
+##This chapter, we play around list of list or a two diamensional list
+lol = [['40', '38', '36', '34'], ['31','42', '41', '30']]
+for c, row in enumerate(lol):
+    for cs, row in enumerate(row):
+        print(f"lol[{c}{cs}]--> {row}   ", end = '')
+    print()
