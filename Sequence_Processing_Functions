@@ -1,0 +1,8 @@
+#Sequence Processing Functions
+##This file explores through few of the sequence processing functions
+num = [10,9,8,7,6,5,4,3,2,1]                                                                                                                                                                         
+rev_sq = [item **2 for item in reversed(num)]
+print(f"{rev_sq}")
+ 
+for n, r in zip(num, rev_sq):
+    print(f"n = {n} rev_sq = {r}")
