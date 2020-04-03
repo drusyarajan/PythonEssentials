@@ -1,30 +1,30 @@
 #import libraries
- import matplotlib.pyplot as plt 
- import numpy as np 
- import random 
- import seaborn as sns 
+import matplotlib.pyplot as plt 
+import numpy as np 
+import random 
+import seaborn as sns 
  
  #here, we roll the dice
- rolls = [random.randrange(1,7) for i in range(6000)] 
+rolls = [random.randrange(1,7) for i in range(60000)] 
  
  #Collect unique faces and count the number of occurences
- number, frequencies = np.unique(rolls, return_counts = True) 
+number, frequencies = np.unique(rolls, return_counts = True) 
 
 ####Beautify the graph####
 
 #1. Set title
- title = f'Rolling a six faced dice {len(rolls):,} Times' 
+title = f'Rolling a six faced dice {len(rolls):,} Times' 
  #2. display grid
- sns.set_style('whitegrid') 
- #3. Name the axes
- axes = sns.barplot(x = number, y = frequencies, palette = 'bright') 
+sns.set_style('whitegrid') 
+ #3. Describe and name the axes
+axes = sns.barplot(x = number, y = frequencies, palette = 'bright') 
+axes.set(xlabel = 'Die Value', ylabel = 'Frequencies')
  #4. Set space after the highest bar
- axes.set_ylim(top=max(frequencies)*1.2)
+axes.set_ylim(top=max(frequencies)*1.1)
  #5. Display details over each bar
- for bar, frequency in zip(axes.patches, frequencies): 
-     text_x = bar.get_x()+bar.get_width()/2.0 
-     text_y = bar.get_height() 
-     text = f'{frequency:,}\n {frequency/len(rolls):3%}' 
-     axes.text(text_x, text_y, text, 
-               fontsize= 11, ha= 'center', va= 'bottom') 
-           
+for bar, frequency in zip(axes.patches, frequencies): 
+    text_x = bar.get_x()+bar.get_width()/2.0 
+    text_y = bar.get_height() 
+    text = f'{frequency:,}\n {frequency/len(rolls):3%}' 
+    axes.text(text_x, text_y, text, 
+              fontsize= 11, ha= 'center', va= 'bottom')          
