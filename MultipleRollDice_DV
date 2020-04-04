@@ -1,0 +1,12 @@
+
+In [47]: def roll_Dice(d,t = None): 
+    ...:     d2list = [] 
+    ...:     for i in range(t): 
+    ...:         faces = [] 
+    ...:         for j in range(d): 
+    ...:             #random.seed(j) 
+    ...:             f = random.randint(1,6) 
+    ...:             faces.append(f) 
+    ...:             d2list.append(faces)     
+    ...:     print(f"2 dim list is : {d2list}") 
+    ...:     print(f"faces list is : {faces}") 
