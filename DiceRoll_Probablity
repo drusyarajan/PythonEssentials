@@ -1,0 +1,25 @@
+def roll_Dice(d,t = None):
+    d2list = []
+    for i in range(t):
+        faces = []
+        for j in range(d):
+            random.seed()
+            f = random.randrange(1,7)
+            faces.append(f)
+            d2list.append(faces)    
+    print(f"2 dim list is : {d2list}")
+    print(f"faces list is : {faces}")
+
+import numpy as np
+def checkFace(n):
+    l = len(n)
+    r = len(n[l-1])
+    x = 0
+    for i in range(l):
+        u = np.unique(n[i])
+        if len(u) == 1:
+            x += 1
+    print(f"Dice was rolled {l} number of times")
+    print(f"Player used {r} dice")
+    print(f"We got same faces on all dice {x} times")
+    print(f"Probablity of getting the same face on all four dice is {x/l} ")
