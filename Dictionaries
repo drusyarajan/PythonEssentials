@@ -1,0 +1,13 @@
+def dict():
+    #here we iterate through a dictionary
+    states = {'kerala':'KL', 'karnataka':'KA', 'Tamilnadu':'TN', 'puducherry':'PY'}
+    if states:
+        print(f"the dictionary states does have values, they are {states}")
+    else:
+        print(f"the dictionary does not have any values")
+    for k, v in states.items():
+        print(f"key {k} value {v}")
+    for k in states.keys():
+        print(f"{k}")
+    for v in states.values():
+        print(f"{v}")
