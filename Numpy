@@ -1,1 +1,22 @@
+import numpy as np
+import pandas as pd
+import random
 
+##
+grades_df = pd.DataFrame(grades) 
+grades_df 
+grades_df.index = ["Maths", "Science", "Social"] 
+grades_df   
+
+grades_df.Emma
+grades.Emma.Maths
+grades_df.loc['Maths']
+grades_df.iloc[1]
+
+
+grades_df 
+grades_df.loc[['Maths', 'Social']] 
+grades_df.iloc[[0,2]] 
+%recall 71:73 
+grades_df.iloc[0:2, [0,2]] 
+grades_df.loc['Maths':'Social',['Alice', 'Eva']]                         
