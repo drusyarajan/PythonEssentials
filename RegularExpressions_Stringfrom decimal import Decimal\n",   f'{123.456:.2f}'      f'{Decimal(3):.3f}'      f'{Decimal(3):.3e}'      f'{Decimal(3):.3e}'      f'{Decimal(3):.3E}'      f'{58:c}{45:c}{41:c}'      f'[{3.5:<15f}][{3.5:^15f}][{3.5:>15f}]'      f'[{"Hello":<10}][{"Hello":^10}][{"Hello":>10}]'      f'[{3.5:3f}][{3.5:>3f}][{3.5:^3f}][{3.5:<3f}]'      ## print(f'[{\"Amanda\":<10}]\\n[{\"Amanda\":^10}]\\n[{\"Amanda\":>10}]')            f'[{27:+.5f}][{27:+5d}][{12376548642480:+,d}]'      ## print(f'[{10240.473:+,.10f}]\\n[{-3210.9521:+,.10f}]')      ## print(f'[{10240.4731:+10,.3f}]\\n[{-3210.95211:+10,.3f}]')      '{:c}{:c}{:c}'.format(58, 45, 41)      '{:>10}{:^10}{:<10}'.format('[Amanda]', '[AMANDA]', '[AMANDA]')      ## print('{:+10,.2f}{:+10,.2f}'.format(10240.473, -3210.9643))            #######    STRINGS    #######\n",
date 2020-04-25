@@ -1,0 +1,72 @@
+from decimal import Decimal 
+
+f'{123.456:.2f}' 
+f'{Decimal(3):.3f}' 
+f'{Decimal(3):.3e}' 
+f'{Decimal(3):.3e}' 
+f'{Decimal(3):.3E}' 
+f'{58:c}{45:c}{41:c}' 
+f'[{3.5:<15f}][{3.5:^15f}][{3.5:>15f}]' 
+f'[{"Hello":<10}][{"Hello":^10}][{"Hello":>10}]' 
+f'[{3.5:3f}][{3.5:>3f}][{3.5:^3f}][{3.5:<3f}]' 
+## print(f'[{\"Amanda\":<10}]\\n[{\"Amanda\":^10}]\\n[{\"Amanda\":>10}]') 
+
+
+f'[{27:+.5f}][{27:+5d}][{12376548642480:+,d}]' 
+## print(f'[{10240.473:+,.10f}]\\n[{-3210.9521:+,.10f}]') 
+## print(f'[{10240.4731:+10,.3f}]\\n[{-3210.95211:+10,.3f}]') 
+'{:c}{:c}{:c}'.format(58, 45, 41) 
+'{:>10}{:^10}{:<10}'.format('[Amanda]', '[AMANDA]', '[AMANDA]') 
+## print('{:+10,.2f}{:+10,.2f}'.format(10240.473, -3210.9643)) 
+
+
+#######    STRINGS    #######\n", 
+
+s1 = 'Happy'
+s2 = 'Birthday'
+f'{s1+" "+s2}'
+f'{s1*5}'
+n1 = 'Drusya'
+n2 = 'Rajan'
+l = len(n1 + " " + n2)
+## print(f'{"*"*l}')
+## print(f'{n1 + " " + n2}')
+## print(f'{"*"*l}')
+
+
+
+sentence  = '\t    \tTo dream and not make our dreams master \t\t'
+f'{len(sentence)}'   
+f'{len(sentence.strip())}'
+f'{len(sentence.rstrip())}'
+f'{sentence.capitalize()}'
+f'{sentence.title()}'
+print(f'A: {ord("A")}    a: {ord("a")}')
+"A" >"a"
+
+
+
+sentence  = 'Hope is a good thing, may be the best of things, and no good thing ever dies.'
+sentence.count('thing', 18)
+sentence.rindex('thing')
+'thing' in sentence
+
+
+
+##Loop that locate and display every word that start with 't' ##
+
+s = list(sentence.split())
+i = 0
+for i in range(len(s)):
+    w = s[i]
+    if w.startswith('t'):
+        print(f'{w}')
+    i += 1
+
+
+
+
+
+
+
+
