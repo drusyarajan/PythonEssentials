@@ -1,0 +1,157 @@
+from decimal import Decimal 
+
+f'{123.456:.2f}' 
+f'{Decimal(3):.3f}' 
+f'{Decimal(3):.3e}' 
+f'{Decimal(3):.3e}' 
+f'{Decimal(3):.3E}' 
+f'{58:c}{45:c}{41:c}' 
+f'[{3.5:<15f}][{3.5:^15f}][{3.5:>15f}]' 
+f'[{"Hello":<10}][{"Hello":^10}][{"Hello":>10}]' 
+f'[{3.5:3f}][{3.5:>3f}][{3.5:^3f}][{3.5:<3f}]' 
+## print(f'[{\"Amanda\":<10}]\\n[{\"Amanda\":^10}]\\n[{\"Amanda\":>10}]') 
+
+
+f'[{27:+.5f}][{27:+5d}][{12376548642480:+,d}]' 
+## print(f'[{10240.473:+,.10f}]\\n[{-3210.9521:+,.10f}]') 
+## print(f'[{10240.4731:+10,.3f}]\\n[{-3210.95211:+10,.3f}]') 
+'{:c}{:c}{:c}'.format(58, 45, 41) 
+'{:>10}{:^10}{:<10}'.format('[Amanda]', '[AMANDA]', '[AMANDA]') 
+## print('{:+10,.2f}{:+10,.2f}'.format(10240.473, -3210.9643)) 
+
+
+#######    STRINGS    #######\n", 
+
+s1 = 'Happy'
+s2 = 'Birthday'
+f'{s1+" "+s2}'
+f'{s1*5}'
+n1 = 'Drusya'
+n2 = 'Rajan'
+l = len(n1 + " " + n2)
+## print(f'{"*"*l}')
+## print(f'{n1 + " " + n2}')
+## print(f'{"*"*l}')
+
+
+
+sentence  = '\t    \tTo dream and not make our dreams master \t\t'
+f'{len(sentence)}'   
+f'{len(sentence.strip())}'
+f'{len(sentence.rstrip())}'
+f'{sentence.capitalize()}'
+f'{sentence.title()}'
+print(f'A: {ord("A")}    a: {ord("a")}')
+"A" >"a"
+
+
+
+sentence  = 'Hope is a good thing, may be the best of things, and no good thing ever dies.'
+sentence.count('thing', 18)
+sentence.rindex('thing')
+'thing' in sentence
+
+
+
+##Loop that locate and display every word that start with 't' ##
+
+s = list(sentence.split())
+i = 0
+for i in range(len(s)):
+    w = s[i]
+    if w.startswith('t'):
+        print(f'{w}')
+    i += 1
+
+
+val = '1 2 3 4 5 6 7 8 9'
+val.replace(' ', '-->')
+num = val.split(' ', 2)
+nu = ' '.join(num)
+nu
+','.join([str(i) for i in range(10)])
+sentence = 'Drusya: 13-03-1989'
+sentence.partition(': ')
+name = 'Drusya Rajan'
+'* '.join(list(reversed(name.split(' '))))
+url = 'https://learning.oreilly.com/videos/python-fundamentals'
+url.replace('https://', '').replace('/python-fundamentals', '').partition('/')
+st = '123ABC'
+st.isdigit()
+st.isalnum()
+st.isalpha()
+st.isdecimal()
+st.isdigit()
+st.isidentifier()
+st.islower()
+st.isnumeric()
+st.isspace()
+st.istitle()
+st.isupper()
+
+file_path = r'c:\Documents\Downloads'
+file_path
+
+
+import re
+p = '12345'
+'Match' if re.fullmatch(p, '1243') else 'No Match'
+## check all digits \d{number_of_digits}
+'Valid' if re.fullmatch(r'\d{5}', p) else 'No Match'
+##  \D- anything not a digit
+## \s - space, tab and new line
+## \S not(\s)
+## \w  word or alphanumeric character
+## \W - not a word or alphanumeric character
+## * - zero or more, ^ - not in , + at least one, 
+## ?- 0 or 1 or character that preceeded,  {n,m} at least n upto and including m
+
+a = '123 Downing Street'
+'True'if re.fullmatch(r'\d{3}\s[A-Z][a-z]*\s[A-Z][a-z]*', a)else 'False'
+
+
+
+## replacing and splitting substrings
+x = '1\t2\t3\t4\t5\t6'
+re.sub(r'\t', '-->', x, count = 2)
+re.split(r'\t', x, maxsplit= 2)
+
+
+
+import re
+sentence  = 'Hope is a good thing, may be the best of things, and no good thing ever dies.'
+result = re.search('thing', sentence)
+result.group() if result else 'none'
+type(result)
+
+result = re.match('may', sentence)
+result.group() if result else 'none'
+
+result = re.match('hope', sentence, flags= re.IGNORECASE)
+result.group() if result else 'none'
+
+
+result = re.match('^good', sentence, flags= re.IGNORECASE)
+result.group() if result else 'none'
+
+contact = 'Drusya Rajan, Home: 9567 123 523, Work: 6282 633 529'
+re.findall(r'\d{4} \d{3} \d{3}', contact)
+
+for no in re.finditer(r'\d{4} \d{3} \d{3}', contact):
+    print(no.group())
+contact = 'Drusya Rajan, e-mail: drusya001@gmail.com'
+pattern = r'([A-Z[a-z]+ [A-Z[a-z]+), e-mail: (\w+@\w+\.\w{3})'
+
+import sys
+sys.getsizeof(contact)
+
+result = re.search(pattern, contact)
+result.group() if result else 'none'
+result.group(1)
+result.group(2)
+
+p = '10 + 5'
+
+pattern = r'(\d+)(\s)([\D]+)\s(\d+)'
+result = re.search(pattern, p)
+result.group() if result else 'none'
