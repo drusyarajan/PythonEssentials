@@ -47,3 +47,7 @@
     ...:              
     ...: !cat accounts.txt 
     ...: !cat temp.txt  
+    
+    ...: os.remove('accounts.txt') 
+    ...: !ls 
+    ...: os.rename('temp.txt', 'accounts.txt')                                     
