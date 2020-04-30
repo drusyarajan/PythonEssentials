@@ -1,0 +1,15 @@
+### Function to display phone numbers in a particular format ## 
+ import pandas as pd 
+     import re 
+     import numpy as np 
+     contacts = [['Drusya', 'drusya@gmail.com', '+919567123623'], 
+     ['Drusya', 'drusya@yahoo.com', '+447424286599'],  
+     ['Byju', 'byju@imperial.com', '+447440384159']] 
+     contacts_df = pd.DataFrame(contacts, columns = ['name', 'email', 'phone']) 
+     contacts_df 
+     def f_formatphone(value): 
+         results = re.fullmatch(r'([+]\d{2})(\d{4})(\d{3})(\d{3})', value)  
+         return '('+ results.group(1)+')'+results.group(2)+'-'+results.group(3)+'-'+results.group(4) if resu
+     lts else None 
+          
+     contacts_df['phone'].map(f_formatphone) 
