@@ -13,3 +13,37 @@
      lts else None 
           
      contacts_df['phone'].map(f_formatphone) 
+
+
+ with open('accounts.txt', mode = 'w') as accounts: 
+     accounts.write('111, Drusya, 100.11\n') 
+     accounts.write('222, Kavya, 200.22\n') 
+     accounts.write('333, Byju, 300.33\n') 
+     
+     
+     
+     
+     
+     
+     
+   ########  Editing a text file 
+   
+   
+   with open('accounts.txt', 'w') as accounts: 
+    ...:     accounts.write('111 Drusya 101.101\n') 
+    ...:     accounts.write('222 Kavya 201.202\n') 
+    ...:     accounts.write('333 Byju 303.303\n') 
+    ...:      
+    ...: accounts = open('accounts.txt', 'r') 
+    ...: temp = open('temp.txt', 'w') 
+    ...: with accounts, temp:  
+    ...:     for record in accounts: 
+    ...:         num, nme, bal = record.split() 
+    ...:         if num == '333': 
+    ...:             new_rec = ' '.join([num, 'ByjuP', bal]) 
+    ...:             temp.write(new_rec+ '\n') 
+    ...:         else: 
+    ...:             temp.write(record) 
+    ...:              
+    ...: !cat accounts.txt 
+    ...: !cat temp.txt  
