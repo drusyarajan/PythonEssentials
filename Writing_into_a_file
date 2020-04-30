@@ -1,0 +1,21 @@
+##Writing lines into a file ### 
+
+with open('grades.txt', mode = 'w') as grades: 
+       grades.write(' 1 Red A\n') 
+       grades.write(' 2 Green B\n') 
+       grades.write(' 3 White A\n') 
+       
+!ls
+!cat grades.txt
+
+
+
+## Read contents of a file on python. 
+with open('accounts.txt', mode = 'r') as accounts: 
+     print('Displaying file contents') 
+     for record in accounts: 
+         name, idno, dep = record.split() 
+         print(f'{name:<10}   {idno:<13}   {dep:<12}') 
+       
+
+
