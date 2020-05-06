@@ -1,0 +1,26 @@
+def try_it(value):
+    try:
+        x = int(value)
+    except ValueError:
+        print(f'"{value}" cannot be converted to an integer')
+    else:
+        print(f'int({value}) returns {int(value)}')
+
+try_it('Python')
+try_it(10.7)
+
+
+
+
+def try_it(value):
+    try:
+        x = int(value)
+    except ValueError:
+        print(f'"{value}" cannot be converted to an integer')
+    else:
+        print(f'int({value}) returns {int(value)}')
+    finally:
+        print('This block is always executed. ')
+
+try_it('Python')
+try_it(10.7)
