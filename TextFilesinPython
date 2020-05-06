@@ -1,0 +1,51 @@
+ with open('grades.txt', 'r') as grades: 
+     with open('text.txt', 'w') as text: 
+         for record in grades: 
+             x, y, z = record.split(' ') 
+             if x == '103' or x == '104': 
+                 new_rec = ' '.join([x, y, 'A']) 
+                 text.write(new_rec +'\n') 
+             else: 
+                 text.write(record+'\n') 
+                      
+  
+ os.remove('grades.txt') 
+ os.rename('text.txt', 'grades.txt') 
+ 
+ 
+ 
+ 
+ [15]: accounts_dict = {'accounts':[{'account':100, 'name':'Drusya', 'balance':10
+    ...: 0}, 
+    ...: {'account':200, 'name':'Byju', 'balance':200}]} 
+    ...: accounts_dict 
+    ...: with open('accounts.json', 'w') as accounts: 
+    ...:     json.dump(accounts_dict, accounts) 
+    ...:      
+    ...: with open('accounts.json', 'r') as accounts: 
+    ...:     accounts_json = json.load(accounts) 
+    ...:      
+    ...:      
+    ...: accounts_json 
+    ...: type(accounts_json) 
+    ...: accounts_json['accounts'] 
+    ...: accounts_json['accounts'][0] 
+    ...: accounts_json['accounts'][1] 
+    
+    
+    
+In [21]: with open('accounts.json', 'r') as accounts: 
+    ...:     print(json.dumps(json.load(accounts), indent=4)) 
+    ...: 
+In [25]: grades_dct = {'grades':[{'id': 1, 'name':'Byju', 'grade': 'A'}, 
+    ...: {'id':2, 'name':'Drusya', 'grade':'B'}], 
+    ...: 'school':[{'id':101, 'name':'KVK', 'score':100}, 
+    ...: {'id':102,'name':'KHSS', 'score':100}]}
+    
+    ...: with open('grades.json', 'w') as grades: 
+    ...:     json.dump(grades_dct, grades) 
+    
+In [32]: with open('grades.json', 'r') as grades: 
+    ...:     print(json.dumps(json.load(grades), indent=4)) 
+    
+    
