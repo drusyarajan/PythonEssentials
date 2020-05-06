@@ -1,0 +1,17 @@
+import csv
+with open('grades.csv', mode= 'w', newline = '') as grades:
+    writer = csv.writer(grades)
+    writer.writerow([1,'Red','A' ])
+    writer.writerow([2,'Green','B'])
+    writer.writerow([3,'White','A'])
+
+!cat grades.csv
+
+
+
+import csv
+with open('grades.csv', mode= 'r', newline = '') as grades:
+    reader = csv.reader(grades)
+    for record in reader:
+        x, y, z = record
+        print(f'{x:>5}{y:>8}{z:>5}')
