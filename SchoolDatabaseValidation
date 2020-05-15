@@ -1,0 +1,64 @@
+import re
+"""Student database"""
+class Grade:
+    """Initialise """
+    def __init__(self, name = None, year = None, division = None, roll = None):
+        self.name = name
+        self.year = year
+        self.division = division
+        self.roll = roll
+        
+    @property
+    def name(self):
+        return self._name
+    
+    @name.setter
+    def name(self, name):
+        if re.fullmatch(r'[A-Z][a-z]*', name):
+            self._name = name
+        else:
+            raise ValueError ('Enter a valid first name')
+        
+    
+    @property
+    def year(self):
+        return self._year
+    
+    @year.setter
+    def year(self, year):
+        if 12<=year<=1:
+            raise ValueError ('School does not have any classroom for {year}, enter valid data.')
+        self._year = year
+
+
+    @property
+    def division(self):
+        return self._division
+    
+    @division.setter
+    def division(self, division):
+        if re.fullmatch(r'[A-C]', division):
+            self._division = division
+        else:
+            raise ValueError ('Your entery is invalid. School have onlu A, B anc C divisions.')
+        
+    
+    @property
+    def roll(self):
+        return self._roll
+    
+    @roll.setter
+    def roll(self, roll):
+        if 50<roll<1:
+            raise ValueError ('Your entry is invalid, each classroom supports only upto 50 students.')
+        self._roll = roll
+    
+    
+    def __repr__(self):
+        return(f'Student {self.name} is in {self.year}{self.division} and is {self.roll} in attendance list')
+    
+    def __str__(self):
+        return(f'Validated, School does have student with {self.name}. '+
+               f'The student sits in {self.year}{self.division}. '+
+               f' Student is identified by {self.roll} in attendance list.')
+        
