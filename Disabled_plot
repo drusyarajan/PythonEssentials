@@ -1,0 +1,16 @@
+%matplotlib inline
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-whitegrid')
+import numpy as np
+import pandas as pd
+df1 = pd.read_csv("disabled_community_dataset.csv")
+south = ['kerala', 'karnataka', 'tamil nadu', 'andhra pradesh']
+df = df1[(df1['state'].isin(south))]
+
+df2 = df[['state', 'number_disabled', 'total_population']] 
+df.plot('state', [4,5, 6,7], kind='bar')
+
+#df.plot(kind='bar',x='state',y='total_population',color='red', stacked=True)
+#df.plot(kind='bar',x='state',y='number_disabled',color='blue', stacked=True)
+#plt.legend(loc='upper left')
+plt.show()
