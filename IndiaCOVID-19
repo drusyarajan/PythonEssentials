@@ -1,0 +1,48 @@
+import re
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.pyplot as plot
+import numpy as np
+
+data = pd.read_csv("complete.csv")
+data.rename(columns={"Name of State / UT":"State"}, inplace=True)
+data = data.drop(columns="Latitude")
+data = data.drop(columns="Longitude")
+data = data.drop(columns="Total Confirmed cases ( Foreign National )")
+data = data.drop(columns="Total Confirmed cases (Indian National)")
+#dataFrame = data.groupby('State').sum().sort_values('Total Confirmed cases' ,ascending=False)
+
+dataFrame = data[data['Date']=='2020-05-26'].sort_values(['Total Confirmed cases','Death'] ,ascending=False)
+
+dataFrame = dataFrame.set_index('State')
+dataFrame.head(3)
+#dataFrame[dataFrame['Total Confirmed cases']<=1000]
+
+
+
+
+
+from brokenaxes import brokenaxes
+
+fig = plt.figure(figsize = (25,35))
+ax1 = fig.add_axes([.2,.1,.3,.3])
+ax2 = fig.add_axes([.500005,.1,.3,.3])
+dataFrame.plot.barh (ax = ax1, rot=0, title= "", legend = False)
+ax1.set_xlim((0,1500))
+dataFrame.plot.barh(ax = ax2, rot=0, title= "", xticks= [2000, 5000, 10000, 30000, 53000], )
+ax2.set_xlim((5001, 53000))
+ax1.spines['right'].set_visible(False)
+ax2.spines['left'].set_visible(False)
+ax2.set_ylabel('')
+ax1.tick_params(right = False)
+ax2.tick_params(left = False)
+ax2.tick_params(labelleft = False)
+
+
+#bax.plot.barh(ax = ax1, rot=0, title= "")
+#bax.plot.barh(ax = ax1, rot=0, title= "")
+#bax.plot.barh(dtaFrame, ax = ax1, rot=0, title= "")
+
+
+#ax1.legend(loc = 'upper right')
+plt.show(block=True);
