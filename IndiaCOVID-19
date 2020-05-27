@@ -1,48 +1,95 @@
 import re
-import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.pyplot as plot
+import sys
+import matplotlib
 import numpy as np
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from IPython.display import HTML
+import matplotlib.ticker as ticker
+import matplotlib.animation as animation
 
+
+#read CSV
 data = pd.read_csv("complete.csv")
+
+#maintain only selected columns
+columns = ['Total Confirmed cases (Indian National)', 'Total Confirmed cases ( Foreign National )', 'Latitude', 'Longitude']
+data.drop(columns, inplace=True, axis=1)
+
+#rename and realign columns 
 data.rename(columns={"Name of State / UT":"State"}, inplace=True)
-data = data.drop(columns="Latitude")
-data = data.drop(columns="Longitude")
-data = data.drop(columns="Total Confirmed cases ( Foreign National )")
-data = data.drop(columns="Total Confirmed cases (Indian National)")
-#dataFrame = data.groupby('State').sum().sort_values('Total Confirmed cases' ,ascending=False)
+data.rename(columns={"Total Confirmed cases":"Total"}, inplace=True)
+data = data[['Date', 'State', 'group', 'Total', 'Cured/Discharged/Migrated', 'Death']]
 
-dataFrame = data[data['Date']=='2020-05-26'].sort_values(['Total Confirmed cases','Death'] ,ascending=False)
+##118 distinct dates collected
+date = data['Date'].unique().tolist() 
 
-dataFrame = dataFrame.set_index('State')
-dataFrame.head(3)
-#dataFrame[dataFrame['Total Confirmed cases']<=1000]
+#filter for one date
+sample_date = '2020-04-26'
+dff = (data[data['Date'].eq(date[117])].sort_values(by='Total', ascending=False).head(10))
+
+##create color dictionary
+colors = dict(zip(
+    ['Kerala', 'Delhi', 'Telengana', 'Haryana', 'Rajasthan',
+       'Uttar Pradesh', 'Tamil Nadu', 'Union Territory of Ladakh',
+       'Karnataka', 'Maharashtra', 'Punjab',
+       'Union Territory of Jammu and Kashmir', 'Andhra Pradesh',
+       'Uttarakhand', 'Odisha', 'Puducherry', 'West Bengal',
+       'Chhattisgarh', 'Union Territory of Chandigarh', 'Gujarat',
+       'Chandigarh', 'Himachal Pradesh', 'Jammu and Kashmir', 'Ladakh',
+       'Madhya Pradesh', 'Bihar', 'Manipur', 'Mizoram',
+       'Andaman and Nicobar Islands', 'Goa', 'Assam', 'Jharkhand',
+       'Arunachal Pradesh', 'Tripura', 'Meghalaya', 'Dadar Nagar Haveli',
+       'Sikkim', 'Nagaland'],
+    ['#adb0ff', '#ffb3ff', '#90d595', '#e48381','#aafbff', '#f7bb5f', '#eafb50',
+    '#adb0ff', '#ffb3ff', '#90d595', '#e48381','#aafbff', '#f7bb5f', '#eafb50',
+    '#adb0ff', '#ffb3ff', '#90d595', '#e48381','#aafbff', '#f7bb5f', '#eafb50',
+    '#adb0ff', '#ffb3ff', '#90d595', '#e48381','#aafbff', '#f7bb5f', '#eafb50',
+    '#adb0ff', '#ffb3ff', '#90d595', '#e48381','#aafbff', '#f7bb5f', '#eafb50',
+    '#adb0ff', '#ffb3ff', '#90d595']))
+group_lk = data.set_index('State')['group'].to_dict()
+
+##Prepare a basic chart
+#fig, ax = plt.subplots(figsize=(15, 8))
+#ax.barh(dff['State'], dff['Total Confirmed cases'])
+
+def draw_barchart(i):
+    year =date[i]
+    #dff = df[df['year'].eq(year)].sort_values(by='value', ascending=True).tail(10)
+    dff = data[data['Date'].eq(year)].sort_values(by='Total', ascending=False).head(10)
+    dff = dff[::-1]
+    ax.clear()
+    #ax.barh(dff['name'], dff['value'], color=[colors[group_lk[x]] for x in dff['name']])
+    ax.barh(dff['State'] , dff['Total'], color=[colors[group_lk[x]] for x in dff['State']])
+    dx = dff['Total'].max() / 100
+
+    for j, (value, name) in enumerate(zip(dff['Total'], dff['State'])):
+        #ax.text(value - dx, j, name, ha='right', weight = 100)  # Tokyo: name
+        ax.text(value+dx,j,  value,  size=14, ha='left',  va='center')
+    # ... polished styles
+    ax.text(1, 0.4, year, transform=ax.transAxes, color='#777777', size=36, ha='right', weight=600)
+    ax.text(0, 1.06, 'Total COVID-19 cases reported', transform=ax.transAxes, size=12, color='#777777')
+    ax.xaxis.set_major_formatter(ticker.StrMethodFormatter('{x:,.0f}'))
+    ax.xaxis.set_ticks_position('top')
+    ax.tick_params(axis='x', colors='#777777', labelsize=12)
+    ax.set_yticks(dff['State'])
+    ax.margins(0, 0.01)
+    ax.grid(which='major', axis='x', linestyle='-')
+    ax.set_axisbelow(True)
+    ax.text(0, 1.12, 'COVID_19 cases reported in India',
+            transform=ax.transAxes, size=24, weight=600, ha='left')
+    ax.text(1, 0, 'by @drusyarajan; data source - Kaggle', transform=ax.transAxes, ha='right',
+            color='#777777', bbox=dict(facecolor='white', alpha=0.8, edgecolor='white'))
+    plt.box(False)   
 
 
 
 
-
-from brokenaxes import brokenaxes
-
-fig = plt.figure(figsize = (25,35))
-ax1 = fig.add_axes([.2,.1,.3,.3])
-ax2 = fig.add_axes([.500005,.1,.3,.3])
-dataFrame.plot.barh (ax = ax1, rot=0, title= "", legend = False)
-ax1.set_xlim((0,1500))
-dataFrame.plot.barh(ax = ax2, rot=0, title= "", xticks= [2000, 5000, 10000, 30000, 53000], )
-ax2.set_xlim((5001, 53000))
-ax1.spines['right'].set_visible(False)
-ax2.spines['left'].set_visible(False)
-ax2.set_ylabel('')
-ax1.tick_params(right = False)
-ax2.tick_params(left = False)
-ax2.tick_params(labelleft = False)
-
-
-#bax.plot.barh(ax = ax1, rot=0, title= "")
-#bax.plot.barh(ax = ax1, rot=0, title= "")
-#bax.plot.barh(dtaFrame, ax = ax1, rot=0, title= "")
-
-
-#ax1.legend(loc = 'upper right')
-plt.show(block=True);
+fig, ax = plt.subplots(figsize=(15, 8))
+animator = animation.FuncAnimation(fig, draw_barchart, frames=range(33, len(date)))
+#HTML(animator.to_jshtml())
+#animator.save('myAnimation.gif', writer='imagemagick', fps=5)
+Writer = animation.writers['ffmpeg']
+writer = Writer(fps=5, metadata=dict(artist='Me'), bitrate=1800)
+animator.save('Animation.mp4', writer=writer)
