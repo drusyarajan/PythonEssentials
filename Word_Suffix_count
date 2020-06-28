@@ -1,0 +1,30 @@
+from textblob import TextBlob
+import re
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.stem import LancasterStemmer
+from lemminflect import getLemma
+
+
+porter = PorterStemmer()
+lancaster=LancasterStemmer()
+s = 'Drusya is going shopping today. She might probably buy food from liscious.'
+blob = TextBlob(s)
+stops = stopwords.words('english')
+suff = {}
+#words = [w for w in blob.words if w not in stops] 
+words = ['caller', 'teller', 'hopper', 
+         'blacken', 'calling', 'telling', 
+         'pink', 'blue', 'green',
+         'liquidate','harden', 'circulated'] 
+for w in words:
+    if w.lower() != getLemma(w, upos='VERB')[0]:
+        wrd = getLemma(w, upos='VERB')[0]
+        end = w.lower().replace(wrd, '')
+        if end != '':
+            if end in suff:
+                suff[end] +=1
+            else:
+                suff[end] = 1
+
+suff
