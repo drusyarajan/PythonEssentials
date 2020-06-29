@@ -408,3 +408,43 @@ BEGIN
     CLOSE c1; 
     
 END;
+
+
+
+
+
+
+
+
+/* select * from emp T1;
+select * from dept T2; */
+with employee as 
+(select T1.empno, T1.ename, T1.job, T1.mgr, T1.hiredate, T1.Sal, T1.comm --, t1.deptno
+       ,T2.deptno, T2.dname, T2.loc 
+       /*Derrived columns start*/
+       ,trunc((sysdate-hiredate)/365) Service_Years
+       /*Derrived columns end*/
+from emp T1
+ left outer join dept T2
+on T1.deptno = T2.deptno 
+order by t1.deptno),
+max_sal as 
+(select max(sal) sal, deptno from employee group by deptno)
+select e.*, 
+case when Service_Years >= 35
+        then sal * 1.5
+     else sal*1.2
+     end
+ New_Sal
+from employee e order by Service_Years;
+
+
+
+
+
+
+
+--select count(empno), deptno from employee group by deptno; --count of employees in each department. 
+--select e.* from employee e, max_sal m where e.deptno = m.deptno and e.sal = m.sal --employee with max salary in each department
+--select * from (select e.*, max(sal) over( partition by deptno, job) maxsal from employee e) where sal  = maxsal;
+--select e.*, max(sal) over( partition by deptno, job) maxsal from employee e order by job, sal desc;
