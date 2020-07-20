@@ -1,0 +1,18 @@
+from pathlib import Path
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+
+text = Path('RomeoandJuliet.txt').read_text()
+text_tokens = word_tokenize(text)
+text = [w for w in text_tokens if w not in stopwords.words()]
+import imageio
+mask_image = imageio.imread('mask_heart.png')
+from wordcloud import WordCloud
+wordcloud = WordCloud(width=1000, height = 1000, colormap = 'prism', 
+                      mask = mask_image, background_color = 'white')
+wordcloud = wordcloud.generate(text)
+wordcloud = wordcloud.to_file('RomeoandJuliet.png')
+
+%matplotlib
+import matplotlib.pyplot as plt
+plt.imshow(wordcloud)
